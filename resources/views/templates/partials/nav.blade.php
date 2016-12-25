@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Social</a>
+      <a class="navbar-brand" href="{{ route('home') }}">Social</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,7 +21,7 @@
       @endif
 
       @if(Auth::user())
-        <form class="navbar-form navbar-left">
+        <form class="navbar-form navbar-left" action="{{ route('search.results') }}">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
