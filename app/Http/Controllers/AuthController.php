@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class AuthController extends Controller
 {
@@ -19,6 +20,12 @@ class AuthController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        
+        User::create([
+            'email' => $request->email,
+            'username' => $request->username,
+            'password' => bcrypt($request->password)
+        ]);
+
+        return redirect()->route('home')->with('info', 'Your account has been created and you can now sign in');       
     }
 }
