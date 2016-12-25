@@ -21,20 +21,24 @@ Route::get('/', [
 // Auth
 Route::get('/signup', [
     'uses' => 'AuthController@getSignup',
-    'as' => 'auth.signup'
+    'as' => 'auth.signup',
+    'middleware' => ['guest']
 ]);
 
 Route::post('/signup', [
     'uses' => 'AuthController@postSignup',
+    'middleware' => ['guest']
 ]);
 
 Route::get('/signin', [
     'uses' => 'AuthController@getSignin',
-    'as' => 'auth.signin'
+    'as' => 'auth.signin',
+    'middleware' => ['guest']
 ]);
 
 Route::post('/signin', [
     'uses' => 'AuthController@postSignin',
+    'middleware' => ['guest']
 ]);
 
 Route::get('/signout', [
