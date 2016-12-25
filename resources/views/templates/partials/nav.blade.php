@@ -31,7 +31,7 @@
 
       <ul class="nav navbar-nav navbar-right">
       @if(Auth::user())
-        <li><a href="#">Amr</a></li>    
+        <li><a href="#">{{ Auth::user()->getNameOrUsername() }}</a></li>    
         <li><a href="#">Update Profile</a></li>
         <li><a href="#">Sign out</a></li>
         @else
