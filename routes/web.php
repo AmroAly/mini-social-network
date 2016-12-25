@@ -18,8 +18,12 @@ Route::get('/', [
     'as' => 'home'    
 ]);
 
-// Signup
+// Auth
 Route::get('/signup', [
     'uses' => 'AuthController@getSignup',
     'as' => 'auth.signup'
+]);
+
+Route::post('/signup', [
+    'uses' => 'AuthController@postSignup',
 ]);

@@ -3,7 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            <form action="" role="form" method="post" class="form-vertical">
+            <form action="{{ route('auth.signup') }}" role="form" method="post" class="form-vertical">
+            {{ csrf_field() }}
                 <div class="form-group">
                     <label for="email">Your email address</label>
                     <input type="text" name="email" class="form-control" id="email" value="">
