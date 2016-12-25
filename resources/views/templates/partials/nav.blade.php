@@ -19,12 +19,16 @@
         <li><a href="#">Friends</a></li>      
       </ul>
       @endif
-      {{-- <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form> --}}
+
+      @if(Auth::user())
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+       @endif
+
       <ul class="nav navbar-nav navbar-right">
       @if(Auth::user())
         <li><a href="#">Amr</a></li>    

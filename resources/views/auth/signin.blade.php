@@ -6,7 +6,8 @@
 <div class="row">
 
     <div class="col-md-6">
-        <form action="" method="post" class="form-vertical">
+        <form action="{{ route('auth.signin') }}" method="post" class="form-vertical">
+        {{ csrf_field() }}
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="control-label">Your email address</label>
                     <input type="text" name="email" class="form-control" id="email" value="{{ Request::old('email') }}">
@@ -21,6 +22,11 @@
                     @if($errors->has('password'))
                         <span class="help-block">{{ $errors->first('password') }}</span>
                     @endif
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
                 </div>
                 <button type="submit" class="btn btn-default">Signin</button>
         </form>

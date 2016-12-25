@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -32,5 +33,22 @@ class AuthController extends Controller
     public function getSignin()
     {
         return view('auth.signin');
+    }
+
+    public function postSignin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(!Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password],
+            $request->has('remember'))) {
+                return redirect()->back()->with('info', 'We couldn\'t sign you in with those credentials.');
+        }
+
+        return redirect()->route('home')->with('info', 'You are now signed in');
     }
 }
