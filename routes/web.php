@@ -11,7 +11,15 @@
 |
 */
 
+
+// Home
 Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home'    
+]);
+
+// Signup
+Route::get('/signup', [
+    'uses' => 'AuthController@getSignup',
+    'as' => 'auth.signup'
 ]);
