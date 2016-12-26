@@ -18,4 +18,15 @@ class ProfileController extends Controller
         return view('profile.index')
                 ->withUser($user);
     }
+
+    public function getEdit()
+    {
+        return view('profile.edit');
+    }
+
+    public function postEdit()
+    {
+        
+    }
+
 }
