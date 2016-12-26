@@ -24,9 +24,15 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
-    public function postEdit()
+    public function postEdit(Request $request)
     {
-        
+        $this->validate($request, [
+            'first_name' => 'alpha|max:50',
+            'last_name' => 'alpha|max:50',
+            'first_name' => 'max:50',
+        ]);
+
+        dd('all ok');
     }
 
 }
