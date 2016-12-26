@@ -60,9 +60,11 @@ Route::get('/user/{username}', [
 
 Route::get('/user/edit', [
     'uses' => 'ProfileController@getEdit',
-    'as' => 'profile.edit'
+    'as' => 'profile.edit',
+    'middleware' => ['auth']
 ]);
 
 Route::post('/user/edit', [
     'uses' => 'ProfileController@postEdit',
+    'middleware' => ['auth']
 ]);
