@@ -62,3 +62,7 @@ Route::get('/user/edit', [
     'uses' => 'ProfileController@getEdit',
     'as' => 'profile.edit'
 ]);
+
+Route::post('/user/edit', [
+    'uses' => 'ProfileController@postEdit',
+]);
