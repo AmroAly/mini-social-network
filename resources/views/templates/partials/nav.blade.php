@@ -32,7 +32,7 @@
       <ul class="nav navbar-nav navbar-right">
       @if(Auth::user())
         <li><a href="{{ route('profile.index', Auth::user()->username) }}">{{ Auth::user()->getNameOrUsername() }}</a></li>    
-        <li><a href="#">Update Profile</a></li>
+        <li><a href="{{ route('profile.edit') }}">Update Profile</a></li>
         <li><a href="{{ route('auth.signout') }}">Sign out</a></li>
         @else
         <li><a href="{{ route('auth.signup') }}">Sign up</a></li>   

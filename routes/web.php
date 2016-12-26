@@ -58,13 +58,13 @@ Route::get('/user/{username}', [
     'as' => 'profile.index'
 ]);
 
-Route::get('/user/edit', [
+Route::get('/profile/edit', [
     'uses' => 'ProfileController@getEdit',
     'as' => 'profile.edit',
     'middleware' => ['auth']
 ]);
 
-Route::post('/user/edit', [
+Route::post('/profile/edit', [
     'uses' => 'ProfileController@postEdit',
     'middleware' => ['auth']
 ]);
