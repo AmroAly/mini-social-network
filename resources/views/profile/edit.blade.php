@@ -10,17 +10,17 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group"><label for="first_name" class="control-label">First name</label>
-                        <input type="text" name="first_name" class="form-control" id ="first_name" value="{{ Auth::user()->first_name }}">
+                        <input type="text" name="first_name" id="first_name" class="form-control" value="{{ Request::old('first_name') ?: Auth::user()->first_name }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group"><label for="last_name" class="control-label">Last name</label>
-                        <input type="text" name="last_name" id="last_name" class="form-control" value="{{ Auth::user()->last_name }}">
+                        <input type="text" name="last_name" id="last_name" class="form-control" value="{{ Request::old('last_name') ?: Auth::user()->last_name }}">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group"><label for="location" class="control-label">Location</label>
-                        <input type="text" name="location" class="form-control" id="location" value="{{ Auth::user()->location }}">
+                        <input type="text" name="location" class="form-control" id="location" value="{{ Request::old('location') ?:  Auth::user()->location }}">
                         </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                     </div>
