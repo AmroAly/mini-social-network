@@ -21,9 +21,9 @@
       @endif
 
       @if(Auth::user())
-        <form class="navbar-form navbar-left" action="{{ route('search.results') }}">
+        <form class="navbar-form navbar-left" method="get" action="{{ route('search.results') }}" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" name="query">
           </div>
           <button type="submit" class="btn btn-default">Search</button>
         </form>
