@@ -21,8 +21,6 @@ class SearchController extends Controller
         ->orWhere('email',  'like', "%{$query}%")
         ->get();
 
-        dd($users);
-
         return view('search.results')
                 ->withUsers($users);
     }
