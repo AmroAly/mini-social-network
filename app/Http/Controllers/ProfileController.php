@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -32,6 +33,14 @@ class ProfileController extends Controller
             'location' => 'max:50'
         ]);
 
+        Auth::user()->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'location' => $request->location
+        ]);
+
+        return redirect()->route('profile.edit')
+                    ->with('info', 'profile updated successfully.');    
     }
 
 }
