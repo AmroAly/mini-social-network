@@ -55,6 +55,11 @@ class User extends Authenticatable
         return "https://www.gravatar.com/avatar/". md5($this->email) . "?d=mm&s=40";
     }
 
+    public function statuse()
+    {
+        return $this->hasMany('App\Status', 'user_id');
+    }
+
     // the first relation from the current user's' point of view
     public function friendsOfMine()
     {
