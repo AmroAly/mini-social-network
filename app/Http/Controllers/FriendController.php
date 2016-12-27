@@ -47,4 +47,9 @@ class FriendController extends Controller
                 ->route('profile.index', $username)
                 ->with('info', 'Friend request sent.');
     }
+
+    public function getAccept($username)
+    {
+        dd($username);
+    }
 }
