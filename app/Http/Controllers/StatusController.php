@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class StatusController extends Controller
 {
@@ -11,5 +12,12 @@ class StatusController extends Controller
         $this->validate($request, [
             'status' => 'required|max:500'
         ]);
+
+        Auth::user()->statuses()->create([
+            'body' => $request->status,
+        ]);
+
+        return redirect()->route('home')
+                ->with('info', 'Status posted.');
     }
 }
