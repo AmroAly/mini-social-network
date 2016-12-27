@@ -79,4 +79,9 @@ class User extends Authenticatable
     {
         return $this->friendOF()->wherePivot('accepted', false)->get();
     }
+
+    public function hasFriendRequestPending(User $user)
+    {
+        return (bool) $this->getPendingRequests()->where('id', $user->id)->count();
+    }
 }
