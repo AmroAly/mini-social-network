@@ -46,8 +46,11 @@
 
                     <form role="form" action="{{ route('status.reply', $status->id) }}" method="post">
                     {{ csrf_field() }}
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has("reply-{$status->id}") ? ' has-error': ''}}">
                             <textarea name="reply-{{ $status->id }}" id="" rows="1" class="form-control"></textarea>
+                            @if($errors->has("reply-{$status->id}"))
+                                <span class="help-block">{{ $errors->first("reply-{$status->id}") }}</span>
+                            @endif
                         </div>
                         <input type="submit" value="reply" class="btn btn-default btn-sm">
                     </form>

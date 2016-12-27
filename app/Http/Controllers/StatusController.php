@@ -23,6 +23,10 @@ class StatusController extends Controller
 
     public function postReply(Request $request, $statusId)
     {
-        dd($statusId);
+        $this->validate($request, [
+            "reply-{$statusId}" => 'required|max:500'
+        ], [
+            'required' => 'The reply body is required'
+        ]);
     }
 }
