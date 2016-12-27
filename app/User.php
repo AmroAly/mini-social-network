@@ -84,4 +84,9 @@ class User extends Authenticatable
     {
         return (bool) $this->getPendingRequests()->where('id', $user->id)->count();
     }
+
+    public function hasFriendRequestReceived()
+    {
+        return (bool) $this->getRequests()->where('id', $user->id)->count();
+    }
 }
