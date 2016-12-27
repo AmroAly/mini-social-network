@@ -11,6 +11,12 @@
             <!--Check if the visited user has friend  request from the current user-->
              @if(Auth::user()->hasFriendRequestPending($user))
                 <p>Waiting for {{ $user->getFirstnameOrUsername() }} to accept your request.</p>
+             @elseif(Auth::user()->hasFriendRequestReceived($user))   
+                <a href="" class="btn btn-success">accept friend request</a>
+             @elseif(Auth::user()->isFriendWith($user))
+                <p>You and {{ $user->getFirstnameOrUsername() }} are friends.</p>
+             @else
+                <a href="" class="btn btn-info">Add as friend</a>      
              @endif
 
             <h3>{{ $user->getFirstnameOrUsername() }}'s friends</h3>
