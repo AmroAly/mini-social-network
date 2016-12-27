@@ -55,12 +55,14 @@ class User extends Authenticatable
         return "https://www.gravatar.com/avatar/". md5($this->email) . "?d=mm&s=40";
     }
 
+    // the first relation from the current user's' point of view
     public function friendsOfMine()
     {
         return $this->belongsToMany('App\User', 'friends', 'user_id', 'friend_id');
     }
 
-    public function friendOF($value='')
+    // the second relation from the other user's point of view
+    public function friendOF()
     {
         return $this->belongsToMany('App\User', 'friends', 'friend_id', 'user_id');
     }
@@ -85,8 +87,13 @@ class User extends Authenticatable
         return (bool) $this->getPendingRequests()->where('id', $user->id)->count();
     }
 
-    public function hasFriendRequestReceived()
+    public function hasFriendRequestReceived(User $user)
     {
         return (bool) $this->getRequests()->where('id', $user->id)->count();
+    }
+
+    public function addFriend(User $user)
+    {
+        return $this->friendOF()->attach($user->id);
     }
 }
