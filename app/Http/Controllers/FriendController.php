@@ -34,6 +34,11 @@ class FriendController extends Controller
                 ->route('profile.index', $username)
                 ->with('info', 'Friend request already pending');
         }
+
+        if(Auth::user()->id == $user->id) {
+            return redirect()->route('home');
+        }
+
         // Check if the two users are already friends
         if(Auth::user()->isFriendWith($user)) {
             return redirect()
