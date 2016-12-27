@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
-    //
+    public function postStatus(Request $request)
+    {
+        
+    }
 }
