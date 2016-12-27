@@ -20,4 +20,9 @@ class Status extends Model
     {
         return $query->whereNull('parent_id');
     }
+
+    public function replies()
+    {
+        return $this->hasMany('App\status', 'parent_id');
+    }
 }
