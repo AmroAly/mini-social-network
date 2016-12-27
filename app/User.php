@@ -103,5 +103,9 @@ class User extends Authenticatable
             'accepted' => true,
         ]);
     }
-    
+
+    public function isFriendsWith(User $user)
+    {
+        return (bool) $this->friends()->where('id', $user->id)->count();
+    }
 }
