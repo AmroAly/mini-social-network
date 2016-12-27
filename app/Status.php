@@ -14,4 +14,10 @@ class Status extends Model
     {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    // get only the statuses with null value in the parent_id column which is basicaly the main statuses
+    public function scopeNotReply($query)
+    {
+        return $query->whereNull('parent_id');
+    }
 }

@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()) {
-            $statuses = Status::where('user_id', Auth::user()->id)
+            $statuses = Status::notReply()->where('user_id', Auth::user()->id)
                 ->orWhereIn('user_id', Auth::user()->friends()->pluck('id'))
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
