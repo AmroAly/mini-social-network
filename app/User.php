@@ -96,4 +96,12 @@ class User extends Authenticatable
     {
         return $this->friendOF()->attach($user->id);
     }
+
+    public function acceptFriendRequest(User $user)
+    {
+        return $this->getRequests()->wherePivot('friend_id', $user->id)->update([
+            'accepted' => true,
+        ]);
+    }
+    
 }
