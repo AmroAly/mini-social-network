@@ -18,7 +18,7 @@
                 <p>You and {{ $user->getFirstnameOrUsername() }} are friends.</p>
              @else
              <!--If there is no relation between the visited user and the current user-->
-                <a href="" class="btn btn-info">Add as friend</a>      
+                <a href="{{ route('friend.add', $user->username) }}" class="btn btn-info">Add as friend</a>      
              @endif
 
             <h3>{{ $user->getFirstnameOrUsername() }}'s friends</h3>
