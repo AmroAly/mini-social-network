@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       @if(Auth::check())
       <ul class="nav navbar-nav">
-        <li><a href="#">Timeline</a></li>  
+        <li><a href="{{ route('home') }}">Timeline</a></li>  
         <li><a href="{{ route('friend.index') }}">Friends</a></li>      
       </ul>
       @endif
