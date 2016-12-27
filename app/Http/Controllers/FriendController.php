@@ -22,18 +22,19 @@ class FriendController extends Controller
     public function getAdd($username)
     {
         $user = User::where('username', $username)->first();
+        // Check if there is no user with such username
         if(!$user) {
             return redirect()
                 ->route('home')
                 ->with('info', 'That user could not be found.');
         }
-
+        // Check if there is pending request between the two users
         if(Auth::user()->hasFriendRequestPending($user) || $user->hasFriendRequestPending(Auth::user())) {
             return redirect()
                 ->route('profile.index', $username)
                 ->with('info', 'Friend request already pending');
         }
-
+        // Check if the two users are already friends
         if(Auth::user()->isFriendWith($user)) {
             return redirect()
                 ->route('profile.index', $username)
