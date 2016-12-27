@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <form action="" method="post">
                 <div class="form-group">
-                    <textarea name="What's up name?" id="status" name="status" class="form-control" row="2"></textarea>
+                    <textarea placeholder="What's up name?" id="status" name="status" class="form-control" row="2"></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">Add post</button>
             </form>
