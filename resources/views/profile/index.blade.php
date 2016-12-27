@@ -8,6 +8,11 @@
         </div>
 
         <div class="col-md-4 col-md-offset-2">
+            <!--Check if the visited user has friend  request from the current user-->
+             @if(Auth::user()->hasFriendRequestPending($user))
+                <p>Waiting for {{ $user->getFirstnameOrUsername() }} to accept your request.</p>
+             @endif
+
             <h3>{{ $user->getFirstnameOrUsername() }}'s friends</h3>
 
             @if(!$user->friends()->count())
