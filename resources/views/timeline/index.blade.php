@@ -3,9 +3,10 @@
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            <form action="" method="post">
+            <form action="{{ route('status.post') }}" method="post">
+            {{ csrf_field() }}
                 <div class="form-group">
-                    <textarea placeholder="What's up name?" id="status" name="status" class="form-control" row="2"></textarea>
+                    <textarea placeholder="What's up {{ Auth::user()->getFirstnameOrUsername() }}?" id="status" name="status" class="form-control" row="2"></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">Add post</button>
             </form>
