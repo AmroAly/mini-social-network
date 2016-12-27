@@ -101,7 +101,7 @@ class User extends Authenticatable
 
     public function acceptFriendRequest(User $user)
     {
-        return $this->getRequests()->wherePivot('friend_id', $user->id)->update([
+        return $this->getRequests()->where('id', $user->id)->first()->pivot->update([
             'accepted' => true,
         ]);
     }
