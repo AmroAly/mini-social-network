@@ -44,9 +44,10 @@
                         </div>
                     </div>
 
-                    <form action="" method="post">
+                    <form role="form" action="{{ route('status.reply', $status->id) }}" method="post">
+                    {{ csrf_field() }}
                         <div class="form-group">
-                            <textarea name="" id="" rows="1" class="form-control"></textarea>
+                            <textarea name="reply-{{ $status->id }}" id="" rows="1" class="form-control"></textarea>
                         </div>
                         <input type="submit" value="reply" class="btn btn-default btn-sm">
                     </form>

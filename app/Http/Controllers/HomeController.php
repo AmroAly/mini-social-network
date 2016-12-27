@@ -22,8 +22,4 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function postReply(Request $request, $statusId)
-    {
-        
-    }
 }
