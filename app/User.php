@@ -62,6 +62,11 @@ class User extends Authenticatable
 
     public function friendOF($value='')
     {
-        return $this->belongsToMany('App\User', 'friends', 'freind_id', 'user_id');
+        return $this->belongsToMany('App\User', 'friends', 'friend_id', 'user_id');
+    }
+
+    public function friends()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', true)->get()->merge($this->friendOF()->wherePivot('accepted', true)->get());
     }
 }
