@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return "https://www.gravatar.com/avatar/". md5($this->email) . "?d=mm&s=40";
     }
+
+    public function friendsOfMine()
+    {
+        return $this->belongsToMany('App\User', 'friends', 'user_id', 'friend_id');
+    }
 }
