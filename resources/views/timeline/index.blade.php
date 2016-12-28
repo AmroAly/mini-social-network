@@ -39,7 +39,7 @@
                             <ul class="list-inline">
                                 <li>{{ $status->created_at->diffForHumans() }}</li>
                                 @if ($status->user->id !== Auth::user()->id)
-                                <li><a href="">Like</a></li>
+                                <li><a href="{{ route('status.like', $status->id) }}">Like</a></li>
                                 <li>10 likes</li>
                                 @endif
                             </ul>
@@ -55,7 +55,7 @@
                                     <ul class="list-inline">
                                         <li>{{ $reply->created_at->diffForHumans() }}</li>
                                         @if ($reply->user->id !== Auth::user()->id)
-                                        <li><a href="">Like</a></li>
+                                        <li><a href="{{ route('status.like', $reply->id) }}">Like</a></li>
                                         <li>10 likes</li>
                                         @endif
                                     </ul>

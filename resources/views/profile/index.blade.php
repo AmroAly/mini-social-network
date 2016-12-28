@@ -22,7 +22,7 @@
                             <p>{{ $status->body }}</p>
                             <ul class="list-inline">
                                 <li>{{ $status->created_at->diffForHumans() }}</li>
-                                <li><a href="">Like</a></li>
+                                <li><a href="{{ route('status.like', $status->id) }}">Like</a></li>
                                 <li>10 likes</li>
                             </ul>
                             {{-- get the comments foreach post--}}
@@ -36,7 +36,7 @@
                                     <p>{{ $reply->body }}</p>
                                     <ul class="list-inline">
                                         <li>{{ $reply->created_at->diffForHumans() }}</li>
-                                        <li><a href="">Like</a></li>
+                                        <li><a href="{{ route('status.like', $reply->id) }}">Like</a></li>
                                         <li>10 likes</li>
                                     </ul>
                                 </div>
