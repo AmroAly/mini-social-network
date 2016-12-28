@@ -61,6 +61,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Status', 'user_id');
     }
 
+    public function likes()
+    {
+        return $this->hasMany('App\Like', 'user_id');
+    }
+
     // the first relation from the current user's' point of view
     public function friendsOfMine()
     {
@@ -122,7 +127,7 @@ class User extends Authenticatable
         return (bool) $status->likes
                 ->where('likeable_id', $status->id)
                 ->where('likeable_type', get_class($status))
-                ->where('user_id', $status->$this->id)
+                ->where('user_id', $this->id)
                 ->count();
     }
 }
