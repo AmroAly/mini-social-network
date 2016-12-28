@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Status;
 
 class User extends Authenticatable
 {
@@ -114,5 +115,14 @@ class User extends Authenticatable
     public function isFriendWith(User $user)
     {
         return (bool) $this->friends()->where('id', $user->id)->count();
+    }
+
+    public function hasLikedStatus(Status $status)
+    {
+        return (bool) $status->likes
+                ->where('likeable_id', $status->id)
+                ->where('likeable_type', get_class($status))
+                ->where('user_id', $status->$this->id)
+                ->count();
     }
 }
