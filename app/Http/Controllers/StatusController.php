@@ -49,4 +49,9 @@ class StatusController extends Controller
 
         return redirect()->back();
     }
+
+    public function getLike($statusId)
+    {
+        dd($statusId);
+    }
 }
