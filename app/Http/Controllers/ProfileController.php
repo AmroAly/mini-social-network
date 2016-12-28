@@ -15,9 +15,13 @@ class ProfileController extends Controller
         if(!$user) {
             abort(404);
         }
+        // get the statuses for the visited user whether he is the current user or another user
+        $statuses = $user->statuses()->notReply()->get();
 
         return view('profile.index')
-                ->withUser($user);
+                ->withUser($user)
+                ->withStatuses($statuses)
+                ->with('authUserIsFriend', Auth::user()->isFriendWith($user));
     }
 
     public function getEdit()

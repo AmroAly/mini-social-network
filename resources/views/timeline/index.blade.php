@@ -41,8 +41,23 @@
                                 <li><a href="">Like</a></li>
                                 <li>10 likes</li>
                             </ul>
-                        </div>
-                    </div>
+                            {{-- get the comments foreach post--}}
+                            @foreach($status->replies as $reply)
+                            <div class="media">
+                                <a href="{{ route('profile.index', $reply->user->username) }}" class="pull-left">
+                                    <img src="{{ $reply->user->getAvatarUrl() }}" alt="{{ $reply->user->getNameOrUsername() }}" class="media-object">
+                                </a>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><a href="{{ route('profile.index', $reply->user->username) }}">{{ $reply->user->getNameOrUsername() }}</a></h5>
+                                    <p>{{ $reply->body }}</p>
+                                    <ul class="list-inline">
+                                        <li>{{ $reply->created_at->diffForHumans() }}</li>
+                                        <li><a href="">Like</a></li>
+                                        <li>10 likes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @endforeach
 
                     <form role="form" action="{{ route('status.reply', $status->id) }}" method="post">
                     {{ csrf_field() }}
@@ -54,6 +69,8 @@
                         </div>
                         <input type="submit" value="reply" class="btn btn-default btn-sm">
                     </form>
+                        </div>
+                    </div>
 
                 @endforeach
                 {{ $statuses->links() }}
