@@ -38,8 +38,10 @@
                             <p>{{ $status->body }}</p>
                             <ul class="list-inline">
                                 <li>{{ $status->created_at->diffForHumans() }}</li>
+                                @if ($status->user->id !== Auth::user()->id)
                                 <li><a href="">Like</a></li>
                                 <li>10 likes</li>
+                                @endif
                             </ul>
                             {{-- get the comments foreach post--}}
                             @foreach($status->replies as $reply)
@@ -52,8 +54,10 @@
                                     <p>{{ $reply->body }}</p>
                                     <ul class="list-inline">
                                         <li>{{ $reply->created_at->diffForHumans() }}</li>
+                                        @if ($reply->user->id !== Auth::user()->id)
                                         <li><a href="">Like</a></li>
                                         <li>10 likes</li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
