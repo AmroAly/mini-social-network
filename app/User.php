@@ -127,7 +127,8 @@ class User extends Authenticatable
     {
         return (bool) $this->friends()->where('id', $user->id)->count();
     }
-
+    
+    // Check if the user has already liked the status
     public function hasLikedStatus(Status $status)
     {
         return (bool) $status->likes
