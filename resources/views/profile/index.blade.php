@@ -71,6 +71,12 @@
                 <a href="{{ route('friend.accept', $user->username) }}" class="btn btn-success">accept friend request</a>
              @elseif(Auth::user()->isFriendWith($user))
                 <p>You and {{ $user->getFirstnameOrUsername() }} are friends.</p>
+
+                <form action="" method="post">
+                {{ csrf_field() }}
+                    <input type="submit" value="unfriend" class="btn btn-default">
+                </form>
+
              @elseif(Auth::user()->id !== $user->id)
              <!--If there is no relation between the visited user and the current user-->
                 <a href="{{ route('friend.add', $user->username) }}" class="btn btn-info">Add as friend</a>      
