@@ -112,7 +112,8 @@ class User extends Authenticatable
 
     public function deleteFriend(User $user)
     {
-        return $this->friendOF()->detach($user->id);
+        $this->friendOF()->detach($user->id);
+        $this->friendsOfMine()->detach($user->id);
     }
 
     public function acceptFriendRequest(User $user)
