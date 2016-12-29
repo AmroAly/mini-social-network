@@ -110,6 +110,11 @@ class User extends Authenticatable
         ]);
     }
 
+    public function deleteFriend(User $user)
+    {
+        return $this->friendOF()->detach($user->id);
+    }
+
     public function acceptFriendRequest(User $user)
     {
         return $this->getRequests()->where('id', $user->id)->first()->pivot->update([
