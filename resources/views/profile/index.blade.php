@@ -72,7 +72,7 @@
              @elseif(Auth::user()->isFriendWith($user))
                 <p>You and {{ $user->getFirstnameOrUsername() }} are friends.</p>
 
-                <form action="" method="post">
+                <form action="{{ route('friend.delete', $user->username) }}" method="post">
                 {{ csrf_field() }}
                     <input type="submit" value="unfriend" class="btn btn-default">
                 </form>
