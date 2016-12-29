@@ -123,6 +123,7 @@ class User extends Authenticatable
         ]);
     }
 
+    //Check if the current user is friend with the passed-in user
     public function isFriendWith(User $user)
     {
         return (bool) $this->friends()->where('id', $user->id)->count();
