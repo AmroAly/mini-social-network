@@ -109,7 +109,7 @@ class User extends Authenticatable
             'accepted' => false,
         ]);
     }
-
+    // Delete Friend on both sides
     public function deleteFriend(User $user)
     {
         $this->friendOF()->detach($user->id);
