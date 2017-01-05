@@ -8,6 +8,7 @@ use App\Status;
 
 class StatusController extends Controller
 {
+  // Add Post
     public function postStatus(Request $request)
     {
         $this->validate($request, [
@@ -67,11 +68,11 @@ class StatusController extends Controller
         // Check if the user has already liked the session_status
         if (Auth::user()->hasLikedStatus($status)) {
             return redirect()->route('home');
-        } 
+        }
         // Create like
         $like = $status->likes()->create([]);
         Auth::user()->likes()->save($like);
-        
+
         return redirect()->back();
     }
 }
